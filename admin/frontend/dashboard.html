@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563EB', // blue-600
+            secondary: '#16A34A', // green-600
+            accent: '#FACC15', // yellow-400
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-green-50 min-h-screen flex flex-col items-center p-6">
+
+  <!-- Header -->
+  <header class="w-full max-w-4xl bg-white shadow-lg rounded-xl p-6 mb-8 flex justify-between items-center">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-800">Welcome, Admin 👋</h1>
+      <p class="text-gray-500 text-sm mt-1">Manage everything from one place</p>
+    </div>
+    <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg shadow-md transition">Logout</button>
+  </header>
+
+  <!-- Dashboard Cards -->
+  <main class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl">
+    <a href="staff.html" 
+       class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-l-4 border-blue-500 flex flex-col items-center text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" alt="Staff Icon" class="w-16 mb-3">
+      <h2 class="text-xl font-semibold text-gray-800">Manage Staff</h2>
+      <p class="text-gray-500 mt-2 text-sm">Add or remove staff details easily.</p>
+    </a>
+
+    <a href="view-donations.html" 
+       class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-l-4 border-green-500 flex flex-col items-center text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/4213/4213724.png" alt="Donation Icon" class="w-16 mb-3">
+      <h2 class="text-xl font-semibold text-gray-800">View Donations</h2>
+      <p class="text-gray-500 mt-2 text-sm">Check donor details and track donations securely.</p>
+    </a>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-10 text-gray-500 text-sm">
+    © 2025 RJMF Trust | Admin Dashboard
+  </footer>
+
+  <script>
+    function logout() {
+      if (confirm('Are you sure you want to log out?')) {
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold mb-6">Welcome, Admin</h1>
+  <div class="space-y-4">
+    <a href="staff.html" class="block bg-blue-500 text-white px-4 py-2 rounded">Manage Staff</a>
+    <a href="view-donations.html" class="block bg-green-500 text-white px-4 py-2 rounded">View Donation Details</a>
+  </div>
+</body>
+</html> -->

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Staff Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-green-50 min-h-screen p-6">
+  <!-- Header -->
+  <header class="max-w-5xl mx-auto mb-8 flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-gray-800">👩‍⚕️ Staff Admin Panel</h1>
+    <a href="dashboard.html" class="text-blue-600 font-medium hover:underline">← Back to Dashboard</a>
+  </header>
+
+  <!-- Add Staff Form -->
+  <section class="max-w-5xl mx-auto bg-white p-6 rounded-xl shadow-md mb-10 border-l-4 border-blue-500">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Add New Staff</h2>
+    <form id="staffForm" class="grid md:grid-cols-2 gap-4">
+      <input type="text" id="name" placeholder="Full Name" class="border p-3 rounded w-full focus:ring-2 focus:ring-blue-400" required />
+      <input type="text" id="role" placeholder="Role (e.g. Nurse, Doctor)" class="border p-3 rounded w-full focus:ring-2 focus:ring-blue-400" required />
+      <input type="email" id="email" placeholder="Email" class="border p-3 rounded w-full focus:ring-2 focus:ring-blue-400" required />
+      <input type="text" id="phone" placeholder="Phone Number" class="border p-3 rounded w-full focus:ring-2 focus:ring-blue-400" />
+      <div class="md:col-span-2 flex justify-end">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Add Staff</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Staff List -->
+  <section class="max-w-5xl mx-auto bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Staff List</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-3 text-left">Name</th>
+            <th class="p-3 text-left">Role</th>
+            <th class="p-3 text-left">Email</th>
+            <th class="p-3 text-left">Phone</th>
+            <th class="p-3 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="staffTable" class="divide-y divide-gray-200"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center mt-10 text-gray-500 text-sm">
+    © 2025 RJMF Trust | Staff Management
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const API_URL = 'http://localhost:5000/api/staff';
+
+    // Add Staff
+    document.getElementById('staffForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const staff = {
+        name: document.getElementById('name').value,
+        role: document.getElementById('role').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value
+      };
+
+      try {
+        const res = await fetch(`${API_URL}/add`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(staff)
+        });
+
+        if (res.ok) {
+          e.target.reset();
+          loadStaff();
+        } else {
+          alert('Error adding staff. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Network error. Please check if the server is running.');
+      }
+    });
+
+    // Load Staff
+    async function loadStaff() {
+      try {
+        const res = await fetch(API_URL);
+        const staffList = await res.json();
+        const table = document.getElementById('staffTable');
+        table.innerHTML = '';
+
+        staffList.forEach(staff => {
+          const staffId = String(staff._id || staff.id);
+          const row = document.createElement('tr');
+          row.className = "hover:bg-gray-50";
+          row.innerHTML = `
+            <td class="p-3">${staff.name || ''}</td>
+            <td class="p-3">${staff.role || ''}</td>
+            <td class="p-3">${staff.email || ''}</td>
+            <td class="p-3">${staff.phone || '-'}</td>
+            <td class="p-3 text-center">
+              <button onclick="deleteStaff('${staffId}')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition">Delete</button>
+            </td>
+          `;
+          table.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error loading staff:', error);
+        alert('Unable to fetch staff data. Check server connection.');
+      }
+    }
+
+    // Delete Staff
+    async function deleteStaff(id) {
+      if (!confirm('Are you sure you want to delete this staff member?')) return;
+      try {
+        await fetch(`${API_URL}/delete/${id}`, { method: 'DELETE' });
+        loadStaff();
+      } catch (error) {
+        console.error('Error deleting staff:', error);
+        alert('Failed to delete staff.');
+      }
+    }
+
+    // Initial load
+    loadStaff();
+  </script>
+</body>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Staff Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold mb-4">Staff Admin Panel</h1>
+
+  
+  <form id="staffForm" class="bg-white p-4 rounded shadow mb-6">
+    <input type="text" id="name" placeholder="Name" class="border p-2 w-full mb-2" required />
+    <input type="text" id="role" placeholder="Role" class="border p-2 w-full mb-2" required />
+    <input type="email" id="email" placeholder="Email" class="border p-2 w-full mb-2" required />
+    <input type="text" id="phone" placeholder="Phone" class="border p-2 w-full mb-2" />
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Staff</button>
+  </form>
+
+ 
+  <table class="w-full bg-white rounded shadow mb-8">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="p-2">Name</th>
+        <th class="p-2">Role</th>
+        <th class="p-2">Email</th>
+        <th class="p-2">Phone</th>
+        <th class="p-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="staffTable"></tbody>
+  </table>
+
+
+  <script src="script/staff.js"></script>
+</body>
+</html> -->

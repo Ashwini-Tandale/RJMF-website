@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJMF Trust - Making Lives Better</title>
+     <link rel="stylesheet" href="./src/output.css" />
+    <style>
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white m-0 p-0 bg-gradient-to-br from-green-100 via-blue-100 to-green-100">
+    
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-100 max-w-[1550px] mx-auto flex flex-wrap justify-between items-center px-6 md:px-12 py-4 sticky top-0 z-50">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img src="Images/logo.jpg" alt="RJMF Logo" class="h-12 md:h-14 w-auto">
+        </div>
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex flex-wrap justify-center md:justify-start w-full md:w-auto space-x-6 md:space-x-8 text-base text-[25px] md:text-lg font-semibold text-blue-900">
+            <li><a href="#home" class="hover:text-blue-600 block py-2">Home</a></li>
+            <li><a href="#about" class="hover:text-blue-600 block py-2">About Us</a></li>
+            <li><a href="#services" class="hover:text-blue-600 block py-2">Our Work</a></li>
+            <li><a href="#gallery" class="hover:text-blue-600 block py-2">Gallery</a></li>
+            <li><a href="#contact" class="hover:text-blue-600 block py-2">Contact</a></li>
+        </ul>
+
+        <div class="w-full md:w-auto flex justify-center md:justify-end mt-3 md:mt-0">
+            <a href="admin/frontend/donation.html">
+                <button class="bg-blue-700 text-[22px] text-white font-semibold px-6 py-2 rounded-full hover:bg-blue-800 text-sm md:text-base">
+                    Donate
+                </button>
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-blue-900 text-2xl absolute right-6 top-4">
+            ☰
+        </button>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden w-full mt-4 pb-4">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="text-blue-900 hover:text-blue-600 font-semibold text-lg py-2">Home</a>
+                <a href="#about" class="text-blue-900 hover:text-blue-600 font-semibold text-lg py-2">About Us</a>
+                <a href="#services" class="text-blue-900 hover:text-blue-600 font-semibold text-lg py-2">Our Work</a>
+                <a href="#gallery" class="text-blue-900 hover:text-blue-600 font-semibold text-lg py-2">Gallery</a>
+                <a href="#contact" class="text-blue-900 hover:text-blue-600 font-semibold text-lg py-2">Contact</a>
+                <a href="admin/frontend/donation.html" class="w-full">
+                    <button class="bg-blue-700 text-white px-6 py-2 rounded-full font-semibold text-base w-full">
+                        Donate
+                    </button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Tagline -->
+    <section id="home" class="relative h-[75vh] flex items-center justify-center pt-0 pb-8 mt-0" >
+        <div class="w-[90%] mx-auto rounded-2xl overflow-hidden shadow-2xl relative">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Images/Fitness_Garden.jpg')"></div>
+            <div class="relative z-10 text-center text-white px-6 md:px-12 py-16 md:py-20">
+                <div class="fade-in">
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4 transform hover:scale-105 transition duration-300">
+                        Because Only Together We Can
+                    </h1>
+                    <div class="w-32 h-1 bg-yellow-400 mx-auto mb-6 rounded animate-on-scroll"></div>
+                    <h2 class="text-2xl md:text-4xl font-bold mb-6 leading-tight slide-in-left">
+                        BUILD A WORLD WHERE ALL ARE SAFE, STRONG & VALUED
+                    </h2>
+                    <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto slide-in-right">
+                        Working hand in hand to create a healthier, safer, and stronger tomorrow
+                    </p>
+                    <div class="float inline-block">
+                        <a href="#about">
+                            <button class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold text-lg md:text-xl hover:bg-yellow-500 hover:scale-110 hover:shadow-2xl transition-all duration-300 shadow-lg">
+                                Get Started
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section with Mission & Vision -->
+    <section id="about" class="py-12 bg-gradient-to-br from-green-100 via-blue-100 to-green-100 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-yellow-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-blue-400 rounded-full blur-3xl"></div>
+        </div>
+        <div class="w-[90%] mx-auto relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-blue-900 transform hover:scale-105 transition-transform duration-300 inline-block animate-on-scroll">About RJMF Trust</h2>
+                <div class="w-24 h-1 bg-yellow-400 mx-auto rounded"></div>
+            </div>
+            
+            <!-- Main About Content -->
+            <div class="bg-gradient-to-br from-white via-blue-50 to-white rounded-xl shadow-lg p-8 md:p-10 mb-8 border-2 border-blue-100">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed text-center mb-8 max-w-4xl mx-auto">
+                    Established in fond memory of <span class="font-bold text-blue-900">Ravindra Joshi</span>, RJMF Trust was built with a vision to serve society. 
+                    What started as a small initiative has grown into a comprehensive trust dedicated to improving lives 
+                    through healthcare and community welfare. Our foundation is built on compassion, dedication, and the 
+                    belief that together we can make a real difference in people's lives.
+                </p>
+            </div>
+
+            <!-- Mission & Vision Cards -->
+            <div class="grid md:grid-cols-2 gap-6 justify-center">
+                <!-- Mission Box -->
+<div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-xl shadow-lg border-t-4 border-yellow-400 transform hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-on-scroll w-full md:w-[38rem] mx-auto">
+    <div class="flex items-center mb-4">
+        <div class="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center mr-4 transform hover:rotate-12 transition-transform duration-300">
+            <span class="text-3xl">🎯</span>
+        </div>
+        <h3 class="text-2xl font-bold text-blue-900">Our Mission</h3>
+    </div>
+    <p class="text-base text-gray-800 leading-relaxed">
+        To provide quality healthcare services and community support programs that empower individuals and families, 
+        building healthier, stronger, and happier communities for a better tomorrow.
+    </p>
+</div>
+
+<!-- Vision Box -->
+<div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg border-t-4 border-green-500 transform hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-on-scroll w-full md:w-[38rem] mx-auto">
+    <div class="flex items-center mb-4">
+        <div class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center mr-4 transform hover:rotate-12 transition-transform duration-300">
+            <span class="text-3xl">👁️</span>
+        </div>
+        <h3 class="text-2xl font-bold text-blue-900">Our Vision</h3>
+    </div>
+    <p class="text-base text-gray-800 leading-relaxed">
+        To become a leading trust that serves society through comprehensive healthcare, social initiatives, 
+        and wellness programs, ensuring every individual has access to quality services and support.
+    </p>
+</div>
+
+
+        
+        </div>
+    </section>
+
+    <!-- Services/Projects Section -->
+    <section id="services" class="py-10 ">
+        <div class="w-11/12 mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-blue-900 transform hover:scale-105 transition-transform duration-300 inline-block animate-on-scroll">Our Services</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                <!-- Project 1 -->
+                <div class="bg-gradient-to-br from-white to-blue-50 rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer max-w-sm mx-auto flex flex-col group animate-on-scroll border border-blue-100">
+                    <div class="overflow-hidden">
+                        <img src="Images/hospital.jpg" alt="Hospital Services" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col bg-white">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3 text-blue-900 group-hover:text-green-600 transition-colors duration-300">Hospital and Clinical Services</h3>
+                        <p class="text-sm md:text-base text-gray-700 mb-4 flex-grow">
+                            Comprehensive healthcare for all ages, from consultations to specialized treatments. 
+                            Ensuring a healthier tomorrow with quality medical care and advanced facilities.
+                        </p>
+                        <a href="hospital.html" class="mt-auto">
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-green-600 hover:scale-110 hover:shadow-lg transition-all duration-300 w-auto mx-auto block">
+                                Learn More
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-gradient-to-br from-white to-yellow-50 rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer max-w-sm mx-auto flex flex-col group animate-on-scroll border border-yellow-100">
+                    <div class="overflow-hidden">
+                        <img src="Images/Yoga_Garden.jpg" alt="Community Support" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col bg-white">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3 text-blue-900 group-hover:text-green-600 transition-colors duration-300">Yoga Garden</h3>
+                        <p class="text-sm md:text-base text-gray-700 mb-4 flex-grow">
+                            Yoga is ancient Indian art of living. To avail the calm and energetic atmosphere trust is instrumental in development of Bandra Reclamation Promenade. It provides the facility for yoga and other exercise.
+                        </p>
+                        <a href="project.html#Yoga" class="mt-auto">
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-green-600 hover:scale-110 hover:shadow-lg transition-all duration-300 w-auto mx-auto block">
+                                Learn More
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-gradient-to-br from-white to-green-50 rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer max-w-sm mx-auto flex flex-col group animate-on-scroll border border-green-100">
+                    <div class="overflow-hidden">
+                        <img src="Images/Fitness_Garden.jpg" alt="Community Initiatives" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col bg-white">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3 text-blue-900 group-hover:text-green-600 transition-colors duration-300">Open Fitness Garden</h3>
+                        <p class="text-sm md:text-base text-gray-700 mb-4 flex-grow">
+                            A new trend in fitness, where fitness instruments were installed in open area near Bandra promenade which are being used by local residents of all ages.
+                        </p>
+                        <a href="project.html#Fitness" class="mt-auto">
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-green-600 hover:scale-110 hover:shadow-lg transition-all duration-300 w-auto mx-auto block">
+                                Learn More
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-gradient-to-br from-white to-blue-50 rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer max-w-sm mx-auto flex flex-col group animate-on-scroll border border-blue-100">
+                    <div class="overflow-hidden">
+                        <img src="Images/walking_track.jpg" alt="Education Programs" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col bg-white">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3 text-blue-900 group-hover:text-green-600 transition-colors duration-300">Raashi Garden and Walking track</h3>
+                        <p class="text-sm md:text-base text-gray-700 mb-4 flex-grow">
+                           Foresting is necessary to purify the air as it reduces pollution. The plantation what we have done is as per ancient medical science of Bharat.It also has cycling track and walkways along with football court
+                        </p>
+                        <a href="project.html#Raashi" class="mt-auto">
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-green-600 hover:scale-110 hover:shadow-lg transition-all duration-300 w-auto mx-auto block">
+                                Learn More
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-gradient-to-br from-white to-yellow-50 rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer max-w-sm mx-auto flex flex-col group animate-on-scroll border border-yellow-100">
+                    <div class="overflow-hidden">
+                        <img src="Images/solar_park.jpeg" alt="Wellness Facilities" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col bg-white">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3 text-blue-900 group-hover:text-green-600 transition-colors duration-300">Solar Park</h3>
+                        <p class="text-sm md:text-base text-gray-700 mb-4 flex-grow">
+                            Renewable energy is natural source of energy.India is encouraging solar and wind energy.Reduces carbon footprint. Thus it helps to protect environment.
+                        </p>
+                        <a href="project.html#Solar" class="mt-auto">
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-green-600 hover:scale-110 hover:shadow-lg transition-all duration-300 w-auto mx-auto block">
+                                Learn More
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                
+
+                <!-- Project 6 -->
+                <div class="bg-gradient-to-br from-white to-green-50 rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer max-w-sm mx-auto flex flex-col group animate-on-scroll border border-green-100">
+                    <div class="overflow-hidden">
+                        <img src="Images/waste_water_purification.jpeg" alt="Health Camps" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col bg-white">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3 text-blue-900 group-hover:text-green-600 transition-colors duration-300">Water Purification Park</h3>
+                        <p class="text-sm md:text-base text-gray-700 mb-4 flex-grow">
+                            Waste water which was previously going in sea is now being treated in this facility and is used for gardening in Bandra promenade area. This is an unique facility being operated which uses waste water for beautification.
+                        </p>
+                        <a href="project.html#Purification" class="mt-auto">
+                            <button class="bg-green-500 text-white px-6 py-2 rounded-full font-semibold text-sm hover:bg-green-600 hover:scale-110 hover:shadow-lg transition-all duration-300 w-auto mx-auto block">
+                                Learn More
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section id="founders" class="py-10">
+        <div class="w-11/12 mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-blue-900 transform hover:scale-105 transition-transform duration-300 inline-block animate-on-scroll">Founders</h2>
+            
+            <div class="flex flex-wrap justify-center items-center gap-6 pb-6 mb-6">
+                <!-- Founder Card 1 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <img src="Images/CA SK.jpg" alt="Santosh Kelkar" class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] object-cover transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">CA Santosh Kelkar</h3>
+                    <p class="text-lg text-gray-700">Founder Trustee</p>
+                </div>
+
+                <!-- Founder Card 2 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <img src="Images/CA MK.png" alt="CA MK" class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] object-cover transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">CA Madhukar Kulkarni</h3>
+                    <p class="text-lg text-gray-700">Trustee</p>
+                </div>
+
+                <!-- Founder Card 3 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <img src="Images/shrikant_kelkar.png" alt="CA MK" class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] object-cover transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">CA Shrikant Kulkarni</h3>
+                    <p class="text-lg text-gray-700">Trustee</p>
+                </div>
+
+                <!-- Founder Card 4 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <img src="Images/CA vivek_ranade.png" alt="CA MK" class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] object-cover transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">CA Vivek Ranade</h3>
+                    <p class="text-lg text-gray-700">Trustee</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="trustees.html">
+                    <button class="bg-blue-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-800 transition inline-flex items-center">
+                        View All <span class="ml-2 text-xl">→</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- We Are Thankful To Section -->
+    <section id="thankful" class="py-10">
+        <div class="w-11/12 mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-blue-900 transform hover:scale-105 transition-transform duration-300 inline-block animate-on-scroll">We Are Thankful To</h2>
+            
+            <div class="flex flex-wrap justify-center items-center gap-6 pb-6 mb-6">
+                <!-- Supporter Card 1 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <img src="Images/Vinod_Tawade.jpeg" alt="Vinod Tawade" class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] object-cover transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">Vinod ji Tawade</h3>
+                    <p class="text-lg text-gray-700">Helping us in all activites</p>
+                </div>
+
+                <!-- Supporter Card 2 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <div class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] bg-gray-300"><img src="Images/Ashish_Shelar.jpeg" alt=""></div>
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">Ashish ji Shelar</h3>
+                    <p class="text-lg text-gray-700">Development of Yoga Garden</p>
+                </div>
+
+                <!-- Supporter Card 3 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <div class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] bg-gray-300"><img src="Images/Parag_Alavani.jpeg" alt=""></div>
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">Parag ji Alavani</h3>
+                    <p class="text-lg text-gray-700">Helped us for Savarkar Hall</p>
+                </div>
+
+                <!-- Supporter Card 4 -->
+                <div class="m-4 h-[350px] w-[280px] rounded-[10%] p-2 flex flex-col justify-end text-center shadow-md bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-on-scroll">
+                    <div class="rounded-[10%] mx-auto my-2 w-[250px] h-[270px] bg-gray-300"><img src="Images/Ujwala_Modak.jpeg" alt=""></div>
+                    <h3 class="text-xl font-semibold text-blue-900 mb-2">Ujwala ji Modak</h3>
+                    <p class="text-lg text-gray-700">Development of Maternity Home</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="trustees.html">
+                    <button class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition inline-flex items-center">
+                        View All <span class="ml-2 text-xl">→</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-10 ">
+        <div class="w-11/12 mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-blue-900 transform hover:scale-105 transition-transform duration-300 inline-block animate-on-scroll">Gallery</h2>
+            
+            <!-- First Row - 6 Images -->
+            <div class="flex justify-center items-center gap-3 mb-4 flex-wrap">
+                <!-- Gallery Image 1 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img1.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+
+                <!-- Gallery Image 2 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img2.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+
+                <!-- Gallery Image 3 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img3.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+
+                <!-- Gallery Image 4 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img4.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="flex justify-center items-center gap-3 mb-4 flex-wrap">
+                <!-- Gallery Image 5 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img5.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+
+                <!-- Gallery Image 6 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img6.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+            
+
+                <!-- Gallery Image 7 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img7.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+
+                <!-- Gallery Image 8 -->
+                <div class="w-[300px] h-[300px] overflow-hidden rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-2 group animate-on-scroll bg-white">
+                    <img src="Images/img8.jpg" alt="Gallery Image" class="w-full h-full object-cover rounded-lg group-hover:scale-125 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donations" class="py-10 text-white bg-gradient-to-r from-blue-500 to-green-500 rounded-xl mx-auto w-11/12 my-10 transform hover:scale-[1.02] transition-all duration-300 shadow-2xl animate-on-scroll">
+        <div class="text-center px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 transform hover:scale-105 transition-transform duration-300">Give A Helping Hand</h2>
+            <p class="text-base md:text-lg mb-6">Join us in spreading health, hope, and happiness - donate now</p>
+            <a href="admin/frontend/donation.html">
+                <button class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-500 hover:scale-110 hover:shadow-2xl transition-all duration-300 shadow-lg">
+                    Donate Now
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Locate Us Section -->
+    <section id="contact" class="py-10 ">
+        <div class="w-11/12 mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-blue-900 transform hover:scale-105 transition-transform duration-300 inline-block animate-on-scroll">Locate Us</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Map -->
+                <div class="rounded-xl overflow-hidden shadow-md">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.6186672852737!2d72.85200577373787!3d19.124377850454874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c82b75e631c9%3A0xec855655f7286337!2sRavindra%20Joshi%20Medical%20Foundation!5e0!3m2!1sen!2sin!4v1760185784241!5m2!1sen!2sin" 
+          class="w-full h-64 sm:h-80 md:h-96 border-2 border-white rounded-xl shadow-md" 
+          allowfullscreen="" loading="lazy">
+        </iframe>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl shadow-lg border-2 border-blue-100">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-blue-900">Contact Information</h3>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-start transform hover:scale-105 transition-transform duration-300">
+                            <span class="text-green-500 text-3xl mr-4">📍</span>
+                            <div>
+                                <p class="font-semibold text-lg text-gray-800">Address</p>
+                                <p class="text-base text-gray-600">Andheri East, Mumbai, Maharashtra, India</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start transform hover:scale-105 transition-transform duration-300">
+                            <span class="text-blue-500 text-3xl mr-4">📞</span>
+                            <div>
+                                <p class="font-semibold text-lg text-gray-800">Phone</p>
+                                <p class="text-base text-gray-600">9082629858</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start transform hover:scale-105 transition-transform duration-300">
+                            <span class="text-yellow-500 text-3xl mr-4">✉️</span>
+                            <div>
+                                <p class="font-semibold text-lg text-gray-800">Email</p>
+                                <p class="text-base text-gray-600">rjmfpoc@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start transform hover:scale-105 transition-transform duration-300">
+                            <span class="text-green-500 text-3xl mr-4">🕒</span>
+                            <div>
+                                <p class="font-semibold text-lg text-gray-800">Working Hours</p>
+                                <p class="text-base text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                                <p class="text-base text-gray-600">Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer Navigation -->
+    <footer class="bg-blue-900 text-white py-8 mt-10">
+        <div class="w-11/12 mx-auto px-4">
+            <!-- Navigation Links with Yellow Border -->
+            <div class="flex flex-wrap justify-center gap-4 mb-6 pb-6 border-b-4 border-yellow-400">
+                <a href="#home" class="px-5 py-2.5 border-2 border-yellow-400 rounded-lg text-black bg-yellow-400 font-semibold text-base hover:bg-yellow-500 hover:scale-110 transition-all duration-300 shadow-md">
+                    Home
+                </a>
+                <a href="#about" class="px-5 py-2.5 border-2 border-yellow-400 rounded-lg text-black bg-yellow-400 font-semibold text-base hover:bg-yellow-500 hover:scale-110 transition-all duration-300 shadow-md">
+                    About Us
+                </a>
+                <a href="#services" class="px-5 py-2.5 border-2 border-yellow-400 rounded-lg text-black bg-yellow-400 font-semibold text-base hover:bg-yellow-500 hover:scale-110 transition-all duration-300 shadow-md">
+                    Our Work
+                </a>
+                <a href="#gallery" class="px-5 py-2.5 border-2 border-yellow-400 rounded-lg text-black bg-yellow-400 font-semibold text-base hover:bg-yellow-500 hover:scale-110 transition-all duration-300 shadow-md">
+                    Gallery
+                </a>
+                <a href="#contact" class="px-5 py-2.5 border-2 border-yellow-400 rounded-lg text-black bg-yellow-400 font-semibold text-base hover:bg-yellow-500 hover:scale-110 transition-all duration-300 shadow-md">
+                    Contact
+                </a>
+            </div>
+
+            <!-- Footer Content -->
+            <div class="text-center">
+                <p class="text-sm">Contact: 9082629858 | Email: rjmfpoc@gmail.com</p>
+                <p class="text-sm mt-2">Website: www.rjmftrust.org</p>
+                <p class="text-sm text-gray-400 mt-3">Copyright © 2024 RJMF Trust. All Rights Reserved.</p>
+                <p class="text-xs text-gray-500 mt-2">Making Lives Better Through Compassion & Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Scroll animations for elements with animate-on-scroll class
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects to navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+
+</body>
+</html>

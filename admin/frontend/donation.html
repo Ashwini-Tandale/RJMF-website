@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Make a Donation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4 md:p-10">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center text-green-700">Make a Donation</h1>
+
+    
+    <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">Trust Bank Details</h2>
+      <div class="space-y-2 text-gray-700">
+        <p><strong>Bank Name:</strong> State Bank of India</p>
+        <p><strong>Account Name:</strong> Shree Health Trust</p>
+        <p><strong>Account Number:</strong> 123456789012</p>
+        <p><strong>IFSC Code:</strong> SBIN0001234</p>
+        <p><strong>Branch:</strong> Borivali West</p>
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md">
+      <h2 class="text-2xl font-semibold mb-6 text-gray-800">Donation Form</h2>
+      <form id="donationForm" class="space-y-5">
+
+        <div>
+          <input type="text" id="donorName" placeholder="Your Name" 
+                 class="border border-gray-300 p-3 rounded-md w-full focus:ring-2 focus:ring-green-400 focus:outline-none" 
+                 required />
+        </div>
+
+        <div>
+          <input type="email" id="email" placeholder="Email Address" 
+                 class="border border-gray-300 p-3 rounded-md w-full focus:ring-2 focus:ring-green-400 focus:outline-none" 
+                 required />
+        </div>
+
+        <div>
+          <input type="date" id="date" 
+                 class="border border-gray-300 p-3 rounded-md w-full focus:ring-2 focus:ring-green-400 focus:outline-none" 
+                 required />
+        </div>
+
+        <div>
+          <input type="number" id="amount" placeholder="Donation Amount (₹)" 
+                 class="border border-gray-300 p-3 rounded-md w-full focus:ring-2 focus:ring-green-400 focus:outline-none" 
+                 required />
+        </div>
+
+        <div>
+          <input type="text" id="phone" placeholder="Phone Number" 
+                 class="border border-gray-300 p-3 rounded-md w-full focus:ring-2 focus:ring-green-400 focus:outline-none" />
+        </div>
+
+        <div>
+          <textarea id="message" placeholder="Message or Purpose (optional)" 
+                    class="border border-gray-300 p-3 rounded-md w-full h-28 resize-none focus:ring-2 focus:ring-green-400 focus:outline-none"></textarea>
+        </div>
+
+        <div class="flex justify-center">
+          <button type="submit" 
+                  class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-md transition duration-300">
+            Submit Donation
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('donationForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const donation = {
+        name: document.getElementById('donorName').value,
+        email: document.getElementById('email').value,
+        date: document.getElementById('date').value,
+        amount: parseFloat(document.getElementById('amount').value),
+        phone: document.getElementById('phone').value || undefined,
+        message: document.getElementById('message').value || undefined
+      };
+
+      try {
+        const res = await fetch('http://localhost:5000/api/donations/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(donation)
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert('Thank you for your donation!');
+          e.target.reset();
+        } else {
+          alert(`Error: ${data.error || 'Something went wrong. Please try again.'}`);
+        }
+      } catch (error) {
+        console.error('Error submitting donation:', error);
+        alert('Network error. Please check if the server is running.');
+      }
+    });
+  </script>
+</body>
+</html> 
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Make a Donation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold mb-4">Trust Bank Details</h1>
+  <div class="bg-white p-4 rounded shadow mb-6">
+    <p><strong>Bank Name:</strong> State Bank of India</p>
+    <p><strong>Account Name:</strong> Shree Health Trust</p>
+    <p><strong>Account Number:</strong> 123456789012</p>
+    <p><strong>IFSC Code:</strong> SBIN0001234</p>
+    <p><strong>Branch:</strong> Borivali West</p>
+  </div>
+
+  <h2 class="text-xl font-semibold mb-4">Donation Form</h2>
+  <form id="donationForm" class="bg-white p-4 rounded shadow space-y-4">
+
+    <div><input type="text" id="donorName" placeholder="Your Name" class="border p-2 w-60vw" required /></div>
+    <div><input type="email" id="email" placeholder="Email Address" class="border p-2 w-60vw" required /></div>
+    <div><input type="date" id="date" class="border p-2 w-60vw" required /></div>
+    <div><input type="number" id="amount" placeholder="Donation Amount (₹)" class="border p-2 w-60vw" required /></div>
+    <div><input type="text" id="phone" placeholder="Phone Number" class="border p-2 w-60vw" /></div>
+    <div><textarea id="message" placeholder="Message or Purpose (optional)" class="border p-2 w-60vw"></textarea></div>
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Submit Donation</button>
+  </form>
+
+  <script>
+    document.getElementById('donationForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const donation = {
+        name: document.getElementById('donorName').value,
+        email: document.getElementById('email').value,
+        date: document.getElementById('date').value,
+        amount: parseFloat(document.getElementById('amount').value),
+        phone: document.getElementById('phone').value || undefined,
+        message: document.getElementById('message').value || undefined
+      };
+
+      try {
+        const res = await fetch('http://localhost:5000/api/donations/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(donation)
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert('Thank you for your donation!');
+          e.target.reset();
+        } else {
+          alert(`Error: ${data.error || 'Something went wrong. Please try again.'}`);
+        }
+      } catch (error) {
+        console.error('Error submitting donation:', error);
+        alert('Network error. Please check if the server is running.');
+      }
+    });
+  </script>
+</body>
+</html> -->

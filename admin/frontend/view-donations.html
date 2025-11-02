@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Donation Records</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-6 sm:p-8">
+    
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold text-green-700">Donation Records</h1>
+      <a href="dashboard.html" 
+         class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md shadow transition">
+        ← Back to Dashboard
+      </a>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+        <thead class="bg-green-100">
+          <tr class="text-left text-gray-700">
+            <th class="p-3">Name</th>
+            <th class="p-3">Email</th>
+            <th class="p-3">Date</th>
+            <th class="p-3">Amount (₹)</th>
+            <th class="p-3">Phone</th>
+            <th class="p-3">Message</th>
+          </tr>
+        </thead>
+        <tbody id="donation-list" class="divide-y divide-gray-200 text-gray-700">
+          <tr><td colspan="6" class="text-center p-4 text-gray-500">Loading donations...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    async function loadDonations() {
+      try {
+        const res = await fetch('http://localhost:5000/api/donations');
+        const donations = await res.json();
+
+        const tableBody = document.getElementById('donation-list');
+        tableBody.innerHTML = '';
+
+        if (!donations.length) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="6" class="text-center p-4 text-gray-500">
+                No donations found.
+              </td>
+            </tr>`;
+          return;
+        }
+
+        donations.forEach(donation => {
+          const row = document.createElement('tr');
+          row.className = 'hover:bg-green-50 transition duration-200';
+          row.innerHTML = `
+            <td class="p-3">${donation.name || '-'}</td>
+            <td class="p-3">${donation.email || '-'}</td>
+            <td class="p-3">${donation.date ? new Date(donation.date).toLocaleDateString() : '-'}</td>
+            <td class="p-3 font-semibold text-green-600">₹${donation.amount || '-'}</td>
+            <td class="p-3">${donation.phone || '-'}</td>
+            <td class="p-3">${donation.message || '-'}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } catch (err) {
+        console.error('Error loading donations:', err);
+        document.getElementById('donation-list').innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center p-4 text-red-500">
+              Failed to load donations. Please check your server.
+            </td>
+          </tr>`;
+      }
+    }
+
+    loadDonations();
+  </script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>View Donations</title>
+</head>
+<body>
+  <h1>Donation Records</h1>
+  <div id="donation-list"></div>
+
+  <script src="script/view-donations.js"></script>
+</body>
+</html> -->
