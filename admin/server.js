@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ✅ Manual CORS setup (for frontend access)
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5502');
+  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -29,10 +29,7 @@ app.use((req, res, next) => {
 });
 
 // ✅ MongoDB connection
-mongoose.connect('mongodb://localhost:27017/adminPanelDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect('mongodb://localhost:27017/adminPanelDB')
 .then(() => console.log('✅ MongoDB connected'))
 .catch(err => console.error('❌ MongoDB connection error:', err));
 
